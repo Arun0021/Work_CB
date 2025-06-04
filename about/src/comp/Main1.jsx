@@ -1,21 +1,20 @@
-'use client'; // This directive is crucial for client-side components
+// Main1.jsx
+'use client';
 
 import React from 'react';
-import Image from 'next/image'; // Import Next.js Image component
+import Image from 'next/image';
 import image1 from '../assets/image1.webp';
 
-// Main1 now receives isDarkMode as a prop
-const Main1 = ({ isDarkMode }) => { // Removed toggleDarkMode from props
-  // Common classes for Main1 sections
-  const commonContainerClasses = "flex flex-col md:flex-row items-center justify-center p-8 min-h-screen";
+const Main1 = ({ isDarkMode }) => {
+  // Ensure 'relative' is present here for absolute children positioning
+  const commonContainerClasses = "relative flex flex-col md:flex-row items-center justify-center p-8 min-h-screen";
   const commonTextDivClasses = "flex flex-col items-start justify-center p-8 md:w-1/2 text-center md:text-left";
   const commonAboutUsClasses = "text-sm font-semibold uppercase mb-4";
-  const commonHeadingClasses = "text-4xl md:text-5xl font-bold leading-tight mb-6"; // Adjusted text size for better responsiveness
-  const commonParagraphClasses = "text-base md:text-lg mb-8 max-w-lg"; // Adjusted text size for better responsiveness
-  const commonButtonClasses = "flex items-center px-6 py-3 md:px-8 md:py-4 font-medium rounded-lg shadow-lg transition-all duration-300 text-sm md:text-base"; // Adjusted button size for responsiveness
+  const commonHeadingClasses = "text-4xl md:text-5xl font-bold leading-tight mb-6";
+  const commonParagraphClasses = "text-base md:text-lg mb-8 max-w-lg";
+  const commonButtonClasses = "flex items-center px-6 py-3 md:px-8 md:py-4 font-medium rounded-lg shadow-lg transition-all duration-300 text-sm md:text-base";
   const commonImageDivClasses = "flex justify-center items-center p-4 md:w-1/2";
   const commonImageClasses = "max-w-full h-auto rounded-xl shadow-2xl transform hover:scale-105 transition-transform duration-500";
-
 
   // Dynamic classes based on theme
   const mainBgClass = isDarkMode ? 'bg-gray-900' : 'bg-white';
@@ -24,15 +23,35 @@ const Main1 = ({ isDarkMode }) => { // Removed toggleDarkMode from props
   const purpleSpanColorClass = isDarkMode ? 'text-purple-400' : 'text-purple-600';
   const paragraphColorClass = isDarkMode ? 'text-gray-300' : 'text-gray-700';
   const buttonBgClass = isDarkMode ? 'bg-gray-700' : 'bg-black';
-  const buttonTextColor = 'text-white'; // Text color is always white for these buttons
+  const buttonTextColor = 'text-white';
   const buttonHoverBgClass = isDarkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-800';
-  const buttonSvgColorClass = 'text-white'; // SVG color is always white for these buttons
+  const buttonSvgColorClass = 'text-white';
 
+  // Dynamic border color for the spinning circles
+  const spinningCircleBorderColor = isDarkMode ? 'border-white/10' : 'border-black/20';
 
   return (
     <div className={`${commonContainerClasses} ${mainBgClass}`}>
-      {/* Left Div: Text Content and Button */}
-      <div className={commonTextDivClasses}>
+      {/* Full set of Spinning Circles for the background */}
+      <div className="absolute inset-0"> {/* This container ensures all circles are relative to Main1 */}
+        {/* First Spinning Circle (top-left, 20s spin) */}
+        <div
+          className={`absolute top-3/4 left-5/14 w-64 h-64 border ${spinningCircleBorderColor} rounded-full animate-spin-20s`}
+        ></div>
+
+        {/* Second Spinning Circle (bottom-right, 15s reverse spin) */}
+        {/* <div
+          className={`absolute bottom-1/4 right-1/4 w-64 h-64 border ${spinningCircleBorderColor} rounded-full animate-spin-15s-reverse`}
+        ></div> */}
+
+        {/* Third Spinning Circle (center, largest, 25s spin) */}
+        <div
+          className={`absolute top-1/2 left-1/3 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border ${spinningCircleBorderColor} rounded-full animate-spin-25s`}
+        ></div>
+      </div>
+
+      {/* Left Div: Text Content and Button (ensure z-index is higher than background circles) */}
+      <div className={`${commonTextDivClasses} z-10`}>
         <p className={`${commonAboutUsClasses} ${aboutUsColorClass}`}>
           ABOUT US
         </p>
@@ -50,16 +69,15 @@ const Main1 = ({ isDarkMode }) => { // Removed toggleDarkMode from props
         </button>
       </div>
 
-      {/* Right Div: Image */}
-      <div className={commonImageDivClasses}>
-        {/* Using Next.js Image component */}
+      {/* Right Div: Image (ensure z-index is higher than background circles) */}
+      <div className={`${commonImageDivClasses} z-10`}>
         <Image
           src={image1}
           alt="Microsoft Teams Conference Room"
           className={commonImageClasses}
-          width={600} // Provide a default width
-          height={400} // Provide a default height
-          priority // Prioritize loading for above-the-fold content
+          width={600}
+          height={400}
+          priority
         />
       </div>
     </div>

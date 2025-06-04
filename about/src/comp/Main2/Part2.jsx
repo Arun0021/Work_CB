@@ -61,7 +61,9 @@ const Part2 = ({ isDarkMode }) => {
   const currentContent = contentData[activeTab];
 
   // Common classes for various elements (to reduce duplication)
-  const commonContainerClasses = "flex flex-col items-center justify-center py-16 px-4 md:px-8";
+  // Ensure commonContainerClasses has 'relative' for absolute children
+  // Also added 'overflow-hidden' to clip the blur if it goes outside the section
+  const commonContainerClasses = "relative flex flex-col items-center justify-center py-16 px-4 md:px-8 overflow-hidden";
   const commonButtonContainerClasses = "flex flex-wrap justify-center gap-4 mb-12";
   const commonButtonClasses = "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border-[2px]";
   // Adjusted commonContentCardClasses for better responsiveness on small screens
@@ -74,8 +76,13 @@ const Part2 = ({ isDarkMode }) => {
   const commonListIconClasses = "w-4 h-4 mr-2 flex-shrink-0";
 
   // Dynamic classes based on theme
-  const containerBgClass = isDarkMode ? 'bg-gray-950' : 'bg-white';
   const containerTextColor = isDarkMode ? 'text-gray-200' : 'text-gray-800';
+
+  // Dynamic colors for the background grid pattern and circle
+  // Updated for the exact shades and opacity from your provided div
+  const newBgGridLineColor = isDarkMode ? '#8080800a' : '#8080800a'; // This specific color has low opacity, so it's subtle in both modes
+  const newBgCircleColor = isDarkMode ? 'bg-fuchsia-600' : 'bg-fuchsia-400';
+  const newBgOuterDivColor = isDarkMode ? 'bg-gray-950' : 'bg-white'; // Matches the base background of the section
 
   const buttonActiveBg = isDarkMode ? 'bg-purple-700' : 'bg-purple-600';
   const buttonActiveText = 'text-white';
@@ -93,11 +100,32 @@ const Part2 = ({ isDarkMode }) => {
   const listItemColor = isDarkMode ? 'text-gray-300' : 'text-gray-700';
   const listIconColor = isDarkMode ? 'text-purple-400' : 'text-purple-600';
 
-
   return (
-    <div className={`${commonContainerClasses} ${containerBgClass} ${containerTextColor}`}>
-      {/* Buttons */}
-      <div className={commonButtonContainerClasses}>
+    <div className={`${commonContainerClasses} ${containerTextColor}`}>
+
+      {/* Background Pattern and Pinkish Blur - NEWLY ADDED */}
+      {/* This div uses the exact structure and classes you provided */}
+      <div className={`absolute inset-0 -z-10 h-full w-full ${newBgOuterDivColor}`}>
+        {/* Grid lines */}
+        <div
+          className={`absolute bottom-0 left-0 right-0 top-0`}
+          style={{
+            // The backgroundImage uses the dynamically chosen grid line color
+            backgroundImage: `linear-gradient(to right, ${newBgGridLineColor} 1px, transparent 1px), linear-gradient(to bottom, ${newBgGridLineColor} 1px, transparent 1px)`,
+            backgroundSize: '14px 24px',
+            // Mask image remains, causing the grid to fade at the top
+            maskImage: 'radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 110%)',
+            WebkitMaskImage: 'radial-gradient(ellipse 80% 50% at 50% 0%, #000 70%, transparent 110%)',
+          }}
+        ></div>
+        {/* Pinkish blur circle */}
+        {/* Opacity for the blur circle is confirmed at opacity-20 */}
+        <div className={`absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full ${newBgCircleColor} opacity-20 blur-[100px]`}></div>
+      </div>
+
+      {/* Buttons - Z-index for these elements to be above the background */}
+      {/* Ensure all content elements have a z-index higher than -z-10 */}
+      <div className={`${commonButtonContainerClasses} z-10`}>
         {Object.keys(contentData).map((key) => (
           <button
             key={key}
@@ -113,8 +141,9 @@ const Part2 = ({ isDarkMode }) => {
         ))}
       </div>
 
-      {/* Content Card */}
-      <div className={`${commonContentCardClasses} ${contentCardBg} ${contentCardTextColor}`}>
+      {/* Content Card - Z-index for this element to be above the background */}
+      {/* Ensure all content elements have a z-index higher than -z-10 */}
+      <div className={`${commonContentCardClasses} ${contentCardBg} ${contentCardTextColor} z-10`}>
         {/* Left Content */}
         <div className={commonTextContentClasses}>
           <h3 className={`text-2xl sm:text-3xl md:text-4xl font-bold mb-4 ${titleColor}`}>
