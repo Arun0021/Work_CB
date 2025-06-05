@@ -43,7 +43,7 @@ const Footer = ({ isDarkMode }) => {
   return (
     // Apply the main black/dark mode background here
     // Increased py to py-48 to provide enough space for the content and the small background image
-    <footer className={`relative ${footerBgClass} ${footerTextColorClass} py-30 h-[80vh] overflow-hidden w-[1800px] m-auto`}>
+    <footer className={`relative ${footerBgClass} ${footerTextColorClass} py-30 h-[1400px]  w-[1800px] m-auto overflow-hidden`}>
 
       {/* --- MODIFIED: Separate div for the small, transparent background image --- */}
       {/* Positioned absolutely at the bottom, with a fixed height and opacity-30 */}

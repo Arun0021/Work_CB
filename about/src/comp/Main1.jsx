@@ -6,7 +6,7 @@ import Image from 'next/image';
 import image1 from '../assets/image1.webp';
 
 const Main1 = ({ isDarkMode }) => {
-  const commonContainerClasses = "relative flex flex-col md:flex-row items-center justify-center w-[1800px] p-12 m-auto min-h-screen";
+  const commonContainerClasses = "relative flex flex-col md:flex-row items-center justify-center w-[1800px] p-12 m-auto max-h-screen min-h-[1000px]";
   const commonTextDivClasses = "flex flex-col items-start justify-around p-8 md:w-[600px] text-center md:text-left";
   const commonAboutUsClasses = "text-sm font-semibold uppercase mb-4";
   const commonHeadingClasses = "text-4xl md:text-5xl font-bold leading-tight mb-6";

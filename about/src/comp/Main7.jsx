@@ -32,7 +32,7 @@ const Main7 = ({ isDarkMode = false }) => {
 
   return (
     <div
-      className="relative h-screen flex items-center justify-center overflow-hidden p-4 sm:p-8 w-[1800px] m-auto"
+      className="relative h-[1400px] flex items-center justify-center overflow-hidden p-4 sm:p-8 w-[1800px] m-auto"
       style={{
         backgroundImage: `url(${bg.src})`,
         backgroundSize: 'cover',
