@@ -1,9 +1,9 @@
-'use client'; // This directive is crucial for client-side components in Next.js App Router
+'use client';
 
 import React from 'react';
-import Image from 'next/image'; // Import Next.js Image component
-import logo from "../assets/logo1.webp"; // Assuming this is the small icon above "How We Thrive"
-import pic from "../assets/image5.jpg";    // Assuming this is the main image on the left
+import Image from 'next/image';
+import logo from "../assets/logo1.webp";
+import pic from "../assets/image5.jpg";
 
 // Data for the six feature cards
 const featureCardsData = [
@@ -65,14 +65,14 @@ const featureCardsData = [
 
 const Main5 = ({ isDarkMode }) => {
   // Common classes for various elements
-  // Increased top padding to accommodate the absolute positioned logo
-  const commonContainerClasses = "relative flex flex-col md:flex-row items-center justify-center pt-24 pb-16 px-4 md:px-8 overflow-hidden"; // Changed py-16 to pt-24 pb-16
+  const commonContainerClasses = "relative flex flex-col md:flex-row items-center justify-center pt-24 pb-16 px-4 md:px-8 overflow-hidden w-[1800px] m-auto";
   const commonLeftImageContainerClasses = "md:w-1/2 flex justify-center items-center p-4";
-  const commonImageClasses = "max-w-full h-auto rounded-xl shadow-2xl";
+  // --- MODIFIED: Added transition and hover scale for image ---
+  const commonImageClasses = "max-w-full h-auto rounded-xl shadow-2xl transition-transform duration-300 hover:scale-x-105";
+  // --- END MODIFIED ---
   const commonRightContentClasses = "md:w-1/2 flex flex-col items-start text-center md:text-left p-4";
-  // commonTopIconContainerClasses will now be for the absolutely positioned logo
-  const commonTopIconContainerClasses = "w-16 h-16 rounded-full flex items-center justify-center"; // Removed mb as it's absolute
-  const commonMainHeadingClasses = "text-3xl md:text-4xl font-bold leading-tight mb-3";
+  const commonTopIconContainerClasses = "w-16 h-16 rounded-full flex items-center justify-center";
+  const commonMainHeadingClasses = "text-3xl md:text-5xl font-bold leading-tight mb-3";
   const commonParagraphClasses = "text-base max-w-lg mb-6";
   const commonFeaturesGridClasses = "grid grid-cols-1 sm:grid-cols-2 gap-6 w-full";
   const commonFeatureCardClasses = "flex flex-col items-start p-5 rounded-xl shadow-md";
@@ -93,10 +93,14 @@ const Main5 = ({ isDarkMode }) => {
   const paragraphColorClass = isDarkMode ? 'text-gray-400' : 'text-gray-700';
 
   const featureCardBgBorderClass = isDarkMode ? 'bg-gray-800 border-[1px] border-gray-700' : 'bg-white border-[1px] border-gray-200';
-  const featureIconBgClass = isDarkMode ? 'bg-purple-700' : 'bg-purple-500'; // Unified icon background
-  const featureIconTextColor = 'text-white'; // Icon color is always white
+  const featureIconBgClass = isDarkMode ? 'bg-purple-700' : 'bg-purple-500';
+  const featureIconTextColor = 'text-white';
   const featureTitleColor = isDarkMode ? 'text-white' : 'text-gray-900';
   const featureDescriptionColor = isDarkMode ? 'text-gray-400' : 'text-gray-700';
+
+  // --- ADDED: Gradient for the card outline on hover (same as button gradient) ---
+  const cardGradientOutline = 'bg-gradient-to-r from-pink-500 via-blue-400 to-yellow-400';
+  // --- END ADDED ---
 
 
   return (
@@ -104,29 +108,28 @@ const Main5 = ({ isDarkMode }) => {
       {/* Absolute positioned logo at top center */}
       <div className={`absolute top-0 left-1/2 -translate-x-1/2 z-10`}>
         <div className={`${commonTopIconContainerClasses} ${topIconBgBorderShadowClass}`}>
-          {/* Using Next.js Image component */}
           <Image src={logo} alt="Logo Icon" className="w-8 h-8 object-contain" width={32} height={32} />
         </div>
       </div>
 
       {/* Left Div: Image */}
       <div className={commonLeftImageContainerClasses}>
-        {/* Using Next.js Image component and providing width/height */}
         <Image
           src={pic}
           alt="Person working on laptop"
-          className={commonImageClasses}
-          width={584} // Example width, adjust as needed or use fill
-          height={500} // Example height, adjust as needed or use fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive sizing
-          priority // Consider adding priority if this is above the fold
+          className={commonImageClasses} // commonImageClasses now includes the hover scale and transition
+          width={584}
+          height={500}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority
         />
       </div>
 
       {/* Right Div: Content */}
       <div className={commonRightContentClasses}>
         <h2 className={`${commonMainHeadingClasses} ${mainHeadingColorClass}`}>
-          How We <span className={`bg-gradient-to-r ${gradientTextFrom} ${gradientTextVia} ${gradientTextTo} text-transparent bg-clip-text`}>Thrive</span>
+          <span className=" bg-gradient-to-r from-pink-500 via-blue-400 to-yellow-400 bg-clip-text text-transparent font-bold"> How We Thrive </span>
+          {/* How We <span className={`bg-gradient-to-r ${gradientTextFrom} ${gradientTextVia} ${gradientTextTo} text-transparent bg-clip-text`}>Thrive</span> */}
         </h2>
         <p className={`${commonParagraphClasses} ${paragraphColorClass}`}>
           At Everything Talent, we break the norm. Driven by community, we empower individuals to innovate, learn, and push boundaries—fostering shared growth and a relentless pursuit of excellence.
@@ -135,17 +138,22 @@ const Main5 = ({ isDarkMode }) => {
         {/* Features Grid */}
         <div className={commonFeaturesGridClasses}>
           {featureCardsData.map((card, index) => (
-            <div key={index} className={`${commonFeatureCardClasses} ${featureCardBgBorderClass}`}>
-              <div className={`${commonFeatureIconContainerClasses} ${featureIconBgClass} ${featureIconTextColor}`}>
-                {card.icon}
-              </div>
-              <h3 className={`${commonFeatureTitleClasses} ${featureTitleColor}`}>
-                {card.title}
-              </h3>
-              <p className={`${commonFeatureDescriptionClasses} ${featureDescriptionColor}`}>
-                {card.description}
-              </p>
+            // --- MODIFIED: Added outer wrapper for gradient hover effect ---
+            <div key={index} className={`relative rounded-xl overflow-hidden group`}>
+                <div className={`absolute inset-0 rounded-xl ${cardGradientOutline} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                <div className={`${commonFeatureCardClasses} ${featureCardBgBorderClass} relative z-10 transition-transform duration-300 group-hover:scale-[0.98]`}>
+                    <div className={`${commonFeatureIconContainerClasses} ${featureIconBgClass} ${featureIconTextColor}`}>
+                        {card.icon}
+                    </div>
+                    <h3 className={`${commonFeatureTitleClasses} ${featureTitleColor}`}>
+                        {card.title}
+                    </h3>
+                    <p className={`${commonFeatureDescriptionClasses} ${featureDescriptionColor}`}>
+                        {card.description}
+                    </p>
+                </div>
             </div>
+            // --- END MODIFIED ---
           ))}
         </div>
       </div>

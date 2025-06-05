@@ -63,16 +63,16 @@ const Part2 = ({ isDarkMode }) => {
   // Common classes for various elements (to reduce duplication)
   // Ensure commonContainerClasses has 'relative' for absolute children
   // Also added 'overflow-hidden' to clip the blur if it goes outside the section
-  const commonContainerClasses = "relative flex flex-col items-center justify-center py-16 px-4 md:px-8 overflow-hidden";
-  const commonButtonContainerClasses = "flex flex-wrap justify-center gap-4 mb-12";
-  const commonButtonClasses = "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 border-[2px]";
+  const commonContainerClasses = "relative flex flex-col items-center justify-center py-16 px-4 md:px-8 overflow-hidden w-[1800px] m-auto";
+  const commonButtonContainerClasses = "flex flex-wrap justify-center gap-4 mb-8 ";
+  const commonButtonClasses = "px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ";
   // Adjusted commonContentCardClasses for better responsiveness on small screens
   const commonContentCardClasses = "w-full max-w-6xl rounded-2xl shadow-xl p-6 sm:p-8 flex flex-col md:flex-row items-center gap-6 md:gap-8";
   const commonTextContentClasses = "md:w-1/2 flex flex-col justify-center text-center md:text-left";
-  const commonImageContainerClasses = "md:w-1/2 flex justify-center items-center";
+  const commonImageContainerClasses = "md:w-1/2 flex justify-center items-center ";
   // Removed fixed width/height from commonImageClasses, will use Next.js Image props
-  const commonImageClasses = "max-w-full h-auto rounded-xl shadow-lg";
-  const commonListItemClasses = "flex items-start mb-2";
+  const commonImageClasses = " h-[400px] rounded-xl shadow-lg w-[543px]";
+  const commonListItemClasses = "flex items-start mb-2"; 
   const commonListIconClasses = "w-4 h-4 mr-2 flex-shrink-0";
 
   // Dynamic classes based on theme
@@ -84,7 +84,7 @@ const Part2 = ({ isDarkMode }) => {
   const newBgCircleColor = isDarkMode ? 'bg-fuchsia-600' : 'bg-fuchsia-400';
   const newBgOuterDivColor = isDarkMode ? 'bg-gray-950' : 'bg-white'; // Matches the base background of the section
 
-  const buttonActiveBg = isDarkMode ? 'bg-purple-700' : 'bg-purple-600';
+  const buttonActiveBg = isDarkMode ? 'bg-purple-600' : 'bg-purple-300';
   const buttonActiveText = 'text-white';
   const buttonActiveBorder = isDarkMode ? 'border-purple-700' : 'border-purple-600';
   const buttonInactiveBg = isDarkMode ? 'bg-gray-800' : 'bg-white';
@@ -174,9 +174,9 @@ const Part2 = ({ isDarkMode }) => {
             src={currentContent.image}
             alt={currentContent.subtitle}
             className={commonImageClasses}
-            width={543} // Original width, adjust as needed or use fill
-            height={400} // Original height, adjust as needed or use fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive sizing
+            // width={543} // Original width, adjust as needed or use fill
+            // height={400} // Original height, adjust as needed or use fill
+            // sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" // Responsive sizing
             priority // Consider adding priority if this is above the fold
           />
         </div>

@@ -58,9 +58,9 @@ const Part2 = ({ isDarkMode }) => {
   // and the scroll logic becomes simpler, relying on sticky positioning.
 
   // --- Common Classes ---
-  const commonContainerClasses = "relative w-full px-4 md:px-8";
+  const commonContainerClasses = "relative px-4 md:px-8 w-[1800px] m-auto";
   // Each card will take up a full viewport height, so total height will be based on card count
-  const totalScrollHeight = `${fullDisplaySequence.length * 100}vh`;
+  const totalScrollHeight = `${fullDisplaySequence.length * 20}vh`;
 
   const commonStickyCardWrapperClasses = "sticky w-full max-w-7xl mx-auto flex flex-col items-center justify-center rounded-xl shadow-lg border overflow-hidden";
   const fixedCardHeight = "h-[500px]"; // Fixed height for the entire visual card, adjust as needed

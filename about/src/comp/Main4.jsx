@@ -14,7 +14,7 @@ const valueCardsData = [
     hashtag: '#HONESTY',
     // Responsive colSpan: full width on mobile, half on sm, third on md, quarter on lg
     colSpan: 'col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1',
-    bgColorLight: 'bg-yellow-200',
+    bgColorLight: 'bg-[#FDE046]',
     bgColorDark: 'bg-yellow-700',
     textColorLight: 'text-gray-900',
     textColorDark: 'text-gray-100',
@@ -26,9 +26,9 @@ const valueCardsData = [
     hashtag: '#AGILITY',
     // Responsive colSpan: full width on mobile, full on sm, two-thirds on md, half on lg
     colSpan: 'col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2',
-    bgColorLight: 'bg-purple-200',
+    bgColorLight: 'bg-[#8B5CF6]',
     bgColorDark: 'bg-purple-700',
-    textColorLight: 'text-gray-900',
+    textColorLight: 'text-white',
     textColorDark: 'text-gray-100',
   },
   {
@@ -38,7 +38,7 @@ const valueCardsData = [
     hashtag: '#HARDWORK',
     // Responsive colSpan: full width on mobile, half on sm, third on md, quarter on lg
     colSpan: 'col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1',
-    bgColorLight: 'bg-orange-200',
+    bgColorLight: 'bg-[#FDBB74]',
     bgColorDark: 'bg-orange-700',
     textColorLight: 'text-gray-900',
     textColorDark: 'text-gray-100',
@@ -52,7 +52,7 @@ const valueCardsData = [
     hashtag: '#ASPIRATION',
     // Responsive colSpan: full width on mobile, full on sm, two-thirds on md, half on lg
     colSpan: 'col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2',
-    bgColorLight: 'bg-green-200',
+    bgColorLight: 'bg-[#BEF263]',
     bgColorDark: 'bg-green-700',
     textColorLight: 'text-gray-900',
     textColorDark: 'text-gray-100',
@@ -64,7 +64,7 @@ const valueCardsData = [
     hashtag: '#RESILIENT',
     // Responsive colSpan: full width on mobile, full on sm, two-thirds on md, half on lg
     colSpan: 'col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2',
-    bgColorLight: 'bg-gray-300',
+    bgColorLight: 'bg-[#D4D4D9]',
     bgColorDark: 'bg-gray-600',
     textColorLight: 'text-gray-900',
     textColorDark: 'text-gray-100',
@@ -78,7 +78,7 @@ const valueCardsData = [
     hashtag: '#GROWTHMINDSET',
     // Responsive colSpan: full width on mobile, half on sm, third on md, quarter on lg
     colSpan: 'col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1',
-    bgColorLight: 'bg-lime-200',
+    bgColorLight: 'bg-[#BBF7D0]',
     bgColorDark: 'bg-lime-700',
     textColorLight: 'text-gray-900',
     textColorDark: 'text-gray-100',
@@ -90,7 +90,7 @@ const valueCardsData = [
     hashtag: '#CREATIVITY',
     // Responsive colSpan: full width on mobile, half on sm, third on md, quarter on lg
     colSpan: 'col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1',
-    bgColorLight: 'bg-red-200',
+    bgColorLight: 'bg-[#FCA4AF]',
     bgColorDark: 'bg-red-700',
     textColorLight: 'text-gray-900',
     textColorDark: 'text-gray-100',
@@ -102,7 +102,7 @@ const valueCardsData = [
     hashtag: '#LEARNING',
     // Responsive colSpan: full width on mobile, full on sm, two-thirds on md, half on lg
     colSpan: 'col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2',
-    bgColorLight: 'bg-blue-200',
+    bgColorLight: 'bg-[#BEDBFE]',
     bgColorDark: 'bg-blue-700',
     textColorLight: 'text-gray-900',
     textColorDark: 'text-gray-100',
@@ -116,7 +116,7 @@ const valueCardsData = [
     hashtag: '#CONTRIBUTION',
     // Responsive colSpan: full width on mobile, full on sm, two-thirds on md, half on lg
     colSpan: 'col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2',
-    bgColorLight: 'bg-yellow-400',
+    bgColorLight: 'bg-[#FDBB74]',
     bgColorDark: 'bg-yellow-800',
     textColorLight: 'text-gray-900',
     textColorDark: 'text-gray-100',
@@ -128,7 +128,7 @@ const valueCardsData = [
     hashtag: '#TRUST',
     // Responsive colSpan: full width on mobile, full on sm, two-thirds on md, half on lg
     colSpan: 'col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2',
-    bgColorLight: 'bg-red-400',
+    bgColorLight: 'bg-[#F77C73]',
     bgColorDark: 'bg-red-800',
     textColorLight: 'text-white',
     textColorDark: 'text-gray-100',
@@ -138,7 +138,7 @@ const valueCardsData = [
 
 const Main4 = ({ isDarkMode }) => {
   // Common classes for various elements - ADJUSTED TEXT SIZES AND PADDING
-  const commonContainerClasses = "relative flex flex-col items-center py-16 px-4 md:px-8 overflow-hidden";
+  const commonContainerClasses = "relative flex flex-col items-center py-16 px-4 md:px-8 overflow-hidden w-[1800px] m-auto";
   const commonTopSectionClasses = "flex flex-col items-center text-center mb-12 max-w-4xl mx-auto";
   const commonTopIconContainerClasses = "w-20 h-20 rounded-full flex items-center justify-center mb-6";
   const commonSmallHeadingClasses = "text-sm font-semibold uppercase mb-2";
@@ -184,7 +184,7 @@ const Main4 = ({ isDarkMode }) => {
           Our Values
         </p>
         <h2 className={`${commonMainHeadingClasses} ${mainHeadingColorClass}`}>
-          Our Philosophy in <span className={`bg-gradient-to-r ${gradientTextFrom} ${gradientTextVia} ${gradientTextTo} text-transparent bg-clip-text`}>Action</span>
+          Our Philosophy in <span className="bg-gradient-to-r from-pink-500 via-blue-400 to-yellow-400 bg-clip-text text-transparent"> Action </span>
         </h2>
         <p className={`${commonParagraphClasses} ${paragraphColorClass}`}>
           At Everything Talent, Bringing Our Values to Life Through Meaningful Actions
@@ -196,7 +196,7 @@ const Main4 = ({ isDarkMode }) => {
         {valueCardsData.map((card) => (
           <div
             key={card.id}
-            className={`${commonCardClasses} ${card.colSpan} ${isDarkMode ? card.bgColorDark : card.bgColorLight} ${isDarkMode ? card.textColorDark : card.textColorLight}`}
+            className={`${commonCardClasses} ${card.colSpan} ${isDarkMode ? card.bgColorLight : card.bgColorLight} ${isDarkMode ? card.textColorLight : card.textColorLight}`}
           >
             <span className={commonCardIdClasses}>{card.id}</span>
             <div>

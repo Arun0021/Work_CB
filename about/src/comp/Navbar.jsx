@@ -21,7 +21,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
 
   // Conditional classes for the Navbar's main background
   const navbarBgClass = 'bg-transparent'; // Main nav background is transparent
-  const navbarShadowClass = isDarkMode ? 'shadow-lg shadow-gray-700/30' : 'shadow-md shadow-gray-300/30';
+  const navbarShadowClass = '';
 
   // Conditional classes for the inner elements' backgrounds and borders
   const innerDivBgBorderClass = isDarkMode ? 'bg-gray-800 bg-opacity-30 border-gray-700' : 'bg-white bg-opacity-30 border-gray-300';
@@ -60,10 +60,10 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           </div>
 
           {/* Vertical bar (now transparent) */}
-          <div className={`w-[1px] h-5 ${verticalBarBgClass} hidden lg:block`}></div>
+          <div className={`w-[1px] h-5 border lg:block`}></div>
 
           {/* Navigation Links for desktop (hidden on mobile and medium screens) */}
-          <div className="hidden lg:flex space-x-4 ml-6">
+          <div className="hidden lg:flex space-x-4 ml-1 items-center">
             <a href="#" className={`${commonNavLinkClasses} ${navLinkTextColor} ${navLinkHoverColor}`}>Home</a>
             <a href="#" className={`${commonNavLinkClasses} ${navLinkTextColor} ${navLinkHoverColor}`}>Products</a>
             <div className="relative group">
@@ -80,7 +80,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             <a href="#" className={`${commonNavLinkClasses} ${navLinkTextColor} ${navLinkHoverColor}`}>Pricing</a>
             <a href="#" className={`${commonNavLinkClasses} ${navLinkTextColor} ${navLinkHoverColor}`}>Blog</a>
             <a href="#" className={`${commonNavLinkClasses} ${navLinkTextColor} ${navLinkHoverColor}`}>Support</a>
-            <a href="#" className={`${commonNavLinkClasses} ${activeLinkColor} font-semibold border-b-2 ${activeLinkBorderColor} pb-1`}>About</a>
+            <a href="#" className={`${commonNavLinkClasses} ${activeLinkColor} items-center font-semibold border-b-2 ${activeLinkBorderColor} `}>About</a>
           </div>
         </div>
 
@@ -88,7 +88,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         <div className="flex items-center space-x-3">
           {/* Request a Demo Button (hidden on mobile and medium screens) */}
           <button className={`${commonButtonClasses} ${buttonBgBorderClass} ${buttonTextColor} ${buttonHoverBgOpacityClass} hidden lg:flex`}>
-            <span className={gradientTextClass}>
+            <span className='font-bold'>
               Request a Demo
             </span>
             <svg className={`${commonArrowIconClasses} ${arrowIconColorClass}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -96,13 +96,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             </svg>
           </button>
 
-          {/* Login Button (hidden on mobile and medium screens) */}
-          <button className={`${commonButtonClasses} ${buttonBgBorderClass} ${buttonTextColor} ${buttonHoverBgOpacityClass} hidden lg:flex`}>
-            Login
-            <svg className={`${commonArrowIconClasses} ${arrowIconColorClass}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-            </svg>
-          </button>
+          
 
           {/* Dark Mode Toggle (visible on all sizes) */}
           <button
@@ -114,6 +108,14 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             ) : (
               <Moon className="w-5 h-5" />
             )}
+          </button>
+
+          {/* Login Button (hidden on mobile and medium screens) */}
+          <button className={`${commonButtonClasses} ${buttonBgBorderClass} ${buttonTextColor} ${buttonHoverBgOpacityClass} font-bold hidden lg:flex`}>
+            Login
+            <svg className={`${commonArrowIconClasses} ${arrowIconColorClass}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+            </svg>
           </button>
 
           {/* Hamburger Menu Icon (visible on mobile and medium screens, hidden on desktop) */}

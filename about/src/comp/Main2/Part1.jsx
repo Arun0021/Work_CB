@@ -7,11 +7,11 @@ import logo from "../../assets/logo1.webp"; // Assuming this is the correct path
 // Part1 now receives isDarkMode as a prop
 const Part1 = ({ isDarkMode }) => {
   // Common classes for the container
-  const commonContainerClasses = "relative flex flex-col items-center justify-center py-16 px-4 md:px-8 text-center overflow-hidden";
+  const commonContainerClasses = "relative flex flex-col items-center justify-center  px-4 md:px-8 text-center overflow-hidden w-[1800px] m-auto";
   // The via-color for the gradient line will be dynamic based on isDarkMode
   const commonLineClasses = "absolute top-0 w-px h-[100px] bg-gradient-to-b from-transparent to-transparent";
   const commonIconContainerClasses = "relative z-10 w-16 h-16 rounded-full flex items-center justify-center";
-  const commonSmallHeadingClasses = "text-sm font-semibold uppercase mt-8 mb-2";
+  const commonSmallHeadingClasses = "text-sm font-semibold bg-gray-100 px-2 rounded mt-8 mb-2";
   const commonMainHeadingClasses = "text-4xl md:text-5xl font-extrabold leading-tight max-w-3xl mx-auto mb-4";
   const commonParagraphClasses = "text-lg max-w-2xl mx-auto";
 
@@ -27,8 +27,8 @@ const Part1 = ({ isDarkMode }) => {
   const lineViaColor = isDarkMode ? 'via-purple-600' : 'via-purple-300'; // Dynamic via-color for the line SVG stroke
 
   const iconBgGradient = isDarkMode
-    ? 'bg-gradient-to-br from-purple-700 to-pink-700'
-    : 'bg-gradient-to-br from-purple-500 to-pink-500';
+    ? 'bg-gradient-to-br from-purple-300 to-pink-400'
+    : 'bg-gradient-to-br from-purple-300 to-pink-400';
   const iconShadowClass = 'shadow-lg';
 
   const smallHeadingColor = isDarkMode ? 'text-purple-400' : 'text-purple-600';
@@ -105,12 +105,12 @@ const Part1 = ({ isDarkMode }) => {
 
       {/* Button */}
       {/* Its z-index (z-20) is now higher than the background's z-0 */}
-      <button className={`${commonButtonClasses} ${buttonBgClass} ${buttonTextColor} ${buttonHoverBgClass} ${buttonBorderClass} z-20`}>
+      {/* <button className={`${commonButtonClasses} ${buttonBgClass} ${buttonTextColor} ${buttonHoverBgClass} ${buttonBorderClass} z-20`}>
         Subscribe to Updates
         <svg className={`ml-2 w-5 h-5 ${buttonSvgColorClass}`} fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
         </svg>
-      </button>
+      </button> */}
     </div>
   );
 };
